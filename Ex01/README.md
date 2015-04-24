@@ -3,23 +3,23 @@
 
 ###Submitted Files:
 ------------------
-<ul>README - this file</ul>
-<ul>And.hdl</ul>
-<ul>And16.hdl</ul>
-<ul>B.hdl</ul>
-<ul>DMux.hdl</ul>
-<ul>DMux4Way.hdl</ul>
-<ul>DMux8Way.hdl</ul>
-<ul>Mux.hdl</ul>
-<ul>Mux4Way16.hdl</ul>
-<ul>Mux8Way16.hdl</ul>
-<ul>Mux16.hdl</ul>
-<ul>Not.hdl</ul>
-<ul>Not16.hdl</ul>
-<ul>Or.hdl</ul>
-<ul>Or8Way.hdl</ul>
-<ul>Or16.hdl</ul>
-<ul>Xor.hdl</ul>
+<li>README - this file</ul>
+<li>And.hdl</li>
+<li>And16.hdl</li>
+<li>B.hdl</li>
+<li>DMux.hdl</li>
+<li>DMux4Way.hdl</li>
+<li>DMux8Way.hdl</li>
+<li>Mux.hdl</li>
+<li>Mux4Way16.hdl</li>
+<li>Mux8Way16.hdl</li>
+<li>Mux16.hdl</li>
+<li>Not.hdl</li>
+<li>Not16.hdl</li>
+<li>Or.hdl</li>
+<il>Or8Way.hdl</li>
+<li>Or16.hdl</li>
+<il>Xor.hdl</li>
 
 <p>
 in this exc, i have buildthe Logic Gates using machine language
