@@ -1,0 +1,183 @@
+// This file is part of the materials accompanying the book
+// "The Elements of Computing Systems" by Nisan and Schocken,
+// MIT Press. Book site: www.idc.ac.il/tecs
+// File name: projects/12/String.jack
+
+/**
+ * The String type.
+ */
+class String
+{
+	field Array string;
+	field int length, curr_length;
+	/** Constructs a new empty String with a maximum length of
+	 *  maxLength. */
+	constructor String new(int maxLength)
+	{
+		if(~(maxLength>0))
+		{
+			let string = Array.new(1);
+			let length = 1;		
+		}
+		else
+		{
+			let string = Array.new(maxLength);
+		let length = maxLength;
+		}
+
+		let curr_length = 0;
+		return this;
+	}
+
+	/** De-allocates the string and frees its space. */
+	method void dispose()
+	{
+		do string.dispose();
+
+		return;
+	}
+
+	/** Returns the current length of this String. */
+	method int length()
+	{
+		return curr_length;
+	}
+
+	/** Returns the character at location j. */
+	method char charAt(int j)
+	{
+		return string[j];
+	}
+
+	/** Sets the j'th character of this string to be c. */
+	method void setCharAt(int j, char c)
+	{
+		let string[j] = c;
+		return;
+	}
+
+	/** Appends the character c to the end of this String.
+	 *  Returns this string as the return value. */
+	method String appendChar(char c)
+	{
+		if(~(curr_length>length))
+		{
+			let string[curr_length] = c;
+			let curr_length = curr_length+1;
+		}
+
+		return this;
+	}
+
+	/** Erases the last character from this String. */
+	method void eraseLastChar()
+	{
+		if(curr_length>0)
+		{
+			let curr_length = curr_length-1;
+		}
+
+		return;
+	}
+
+	/** Returns the integer value of this String until the first non
+	 *  numeric character. */
+	method int intValue()
+	{
+		var int i, sum;
+		var int negative;
+
+		if(curr_length = 0)
+		{
+			return 0;
+		}
+
+		let i = 1;
+		let sum = string[0]-48;
+
+		if(string[0]=45)
+		{
+			let negative = 1;
+			let i = 2;
+			let sum = string[1]-48;
+		}
+
+		while((i<curr_length)&~(string[i]<48))
+		{
+			let sum =sum*10 +(string[i]-48);
+			let i = i+1;
+		}
+
+		if(negative = 1)
+		{
+			return -sum;
+		}
+		else
+		{
+			return sum;
+		}
+	}
+
+	/** Sets this String to hold a representation of the given
+	 *  number. */
+	method void setInt(int number)
+	{
+		let curr_length = 0;
+
+		if(number<0)
+		{
+			let number = -number;
+
+			do appendChar(45);//adds minus mark
+		}
+
+		do set_int(number);
+
+		return;
+	}
+
+	method void set_int(int number)
+	{
+		var int mod, q;
+		var char ch;
+
+		let q = number/10;
+		let mod = number - (q*10);
+		let ch = String.to_char(mod);
+
+		if(number<10)
+		{
+			do appendChar(ch);
+		}
+		else
+		{
+			do set_int(q);
+
+			do appendChar(ch);
+		}
+
+		return;
+	}
+
+	function char to_char(int num)
+	{
+		return num+48;
+	}
+	/** Returns the new line character. */
+	function char newLine()
+	{
+		return 128;
+	}
+
+	/** Returns the backspace character. */
+	function char backSpace()
+	{
+		return 129;
+	}
+
+	/** Returns the double quote (") character. */
+	function char doubleQuote()
+	{
+		return 34;
+	}
+}

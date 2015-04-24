@@ -1,0 +1,194 @@
+class snakeGame
+{
+    field int size, time;
+    field List list;
+    field Node head;
+	static int rand,eat,num, rand2;
+	static int direction; // 0=none,1=up,2=down,3=left,4=right
+	static int step;
+	static Node head,body,body1,temp, tail;
+
+	constructor snakeGame new()
+	{
+  let eat = 0;
+  let num = 0;
+  let rand = 100;
+  let rand2 = 150;
+  let size = 10;
+  let time = 60;
+	let list = List.new(100,100);
+	let head = list.getHead();
+	do list.add();
+  do list.add();
+  do list.add();
+  do list.add();
+  return this;
+  }
+
+	method void play()
+	{
+
+    do Sys.wait(500);
+		do pressed();
+		return;
+	}
+
+
+    method void move()
+    {
+        do Screen.clearScreen();
+        do random();
+
+        if (direction = 1)
+        {
+            do list.moveUp();
+        }
+        if (direction = 2)
+        {
+            do list.moveDown();
+        }
+        if (direction = 3)
+        {
+            do list.moveLeft();
+        }
+        if (direction = 4)
+        {
+            do list.moveRight();
+        }
+        do list.drawList();
+        do check();
+        do Sys.wait(time);
+        return;
+    }
+
+    method void pressed()
+    {
+        var char key;
+        let direction = 4;
+        while(true)
+        {
+
+            while(key = 0)
+            {
+                let key=Keyboard.keyPressed();
+                do move();
+                if (stop() = true)
+                {
+                    return;
+                }
+                if (list.crash() = true)
+                {
+                return;
+                }
+
+            }
+            if (key = 131)
+            {
+                if(~(direction = 2))
+                {
+                let direction = 1;
+                }
+            }
+            if (key = 133)
+            {
+                if(~(direction = 1))
+                {
+                let direction = 2;
+                }
+            }
+            if (key = 130)
+            {
+                if(~(direction = 4))
+                {
+                let direction = 3;
+                }
+            }
+            if (key = 132)
+            {
+                if(~(direction = 3))
+                {
+                let direction = 4;
+                }
+            }
+            while(~(key = 0))
+            {
+                let key=Keyboard.keyPressed();
+                do move();
+                if (stop() = true)
+                {
+                    if(key=0)
+                    {
+                        return;
+                    }
+                }
+                if (list.crash() = true)
+                {
+                return;
+                }
+            }
+	    }
+		return;
+  	}
+ 	method void random()
+	{
+    if (eat = 1)
+    {
+      let rand = num;
+      let rand2 = rand;
+      while (rand>500)
+      {
+        let rand = rand - 500;
+      }
+      while (rand2>220)
+      {
+        let rand2 = rand2 -200;
+      }
+    let eat = 0;
+    let num = 10;
+    }
+    do Screen.drawCircle(rand, rand2 , 3);
+    return;
+	}
+	method void check()
+	{
+  if(rand < (head.getX1() + size))
+    {
+      if(rand > head.getX1())
+      {
+        if(rand2 < (head.getY1() + size))
+        {
+          if(rand2> head.getY1())
+          {
+          let eat = 1;
+          do list.add();
+          }
+        }
+      }
+    }
+    let num = num+7;
+		return;
+	}
+
+    method boolean stop()
+    {
+        if(head.getX2() + head.getStep() > 512)
+        {
+            return true;
+        }
+        if(head.getX1() - head.getStep() < -1)
+        {
+            return true;
+        }
+         if(head.getY1() - head.getStep() < -1)
+        {
+            return true;
+        }
+         if(head.getY2() + head.getStep() > 256)
+         {
+            return true;
+         }
+        return false;
+     }
+}
+
+

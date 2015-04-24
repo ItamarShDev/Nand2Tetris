@@ -1,0 +1,244 @@
+// This file is part of the materials accompanying the book
+// "The Elements of Computing Systems" by Nisan and Schocken,
+// MIT Press. Book site: www.idc.ac.il/tecs
+// File name: projects/12/Math.jack
+
+/**
+ * A basic math library.
+ */
+class Math
+{
+	static Array power;
+
+	/** Initializes the library. */
+	function void init()
+	{
+		let power= Array.new(16);
+		let power[0] = 1;
+		let power[1] = 2;
+		let power[2] = 4;
+		let power[3] = 8;
+		let power[4] = 16;
+		let power[5] = 32;
+		let power[6] = 64;
+		let power[7] = 128;
+		let power[8] = 256;
+		let power[9] = 512;
+		let power[10] = 1024;
+		let power[11] = 2048;
+		let power[12] = 4096;
+		let power[13] = 8192;
+		let power[14] = 16384;
+		let power[15] = 16384+16384;
+		return;
+	}
+	//return power(2,pow)
+	function int get_power(int pow)
+	{
+		return power[pow];
+	}
+	/** Returns the absolute value of x. */
+	function int abs(int x)
+	{
+		if(x<0)
+		{
+			return -x;
+		}
+
+		return x;
+	}
+	/** Returns the product of x and y. */
+	function int multiply(int x, int y)
+	{
+		var int s_x, tempX, tempY, i, sum,n;
+		let tempX = x;
+		let tempY = y;
+		let sum = 0;
+		let s_x = tempX;
+		let i=0;
+
+		while(i<16)
+		{
+			if(~((y&power[i])=0))
+			{
+				let sum = sum+s_x;
+			}
+
+			let s_x = s_x+s_x;
+			let i = i+1;
+		}
+
+		return sum;
+	}
+	/** Returns the integer part of x/y. */
+	function int divide(int x, int y)
+	{
+
+		var int Q, R, i, bits;
+		var int _x, _y;
+
+		if((y = 0)|(x = 0))
+		{
+			return 0;
+		}
+
+		let _x = x<0;
+		let _y = y<0;
+		let x = Math.abs(x);
+		let y = Math.abs(y);
+		let Q = 0;
+		let R = 0;
+		let i = 0;
+
+		while(i<16)//count the bits in the number
+		{
+			if ((power[i]&x)= power[i])
+			{
+				let bits = i;
+			}
+
+			let i = i+1;
+		}
+
+		let i = bits;
+
+		while(~(i<0))
+		{
+			let R = R+R;
+
+			if((x&power[i])=power[i])//turn the proper bit on
+			{
+				let R = R|1;//set the LSB to 1
+			}
+			else
+			{
+				let R = R&(16384+16383);//set off
+			}
+
+			if(~(R<y))
+			{
+				let R = R-y;
+				let Q = Q|power[i];
+			}
+
+			let i = i-1;
+		}
+
+		if(_x= _y)
+		{
+			return Q;
+		}
+		else
+		{
+			return -Q;
+		}
+	}
+
+	//this is the book's method, above is mine
+	/*
+	function int divide(int x, int y)
+	{
+	    var int q, res, j,t_x;
+	    var int  tx,ty;
+	    let tx = x<0;
+	    let ty = y<0;
+	    let x = Math.abs(x);
+	    let y = Math.abs(y);
+	    if ((y=0)|(x=0))
+	    {
+	        return 0;
+	    }
+	    if (y = (32767+1))   //case overflow can accure
+	    {
+	        if (y=x)
+	        {
+	            return 1;
+	        }
+	        else
+	        {
+	            return 0;
+	        }
+	    }
+
+	    if (y > x)
+	    {
+	        return 0;
+	    }
+
+	    let q = Math.divide(Math.abs(x), Math.abs(y)+Math.abs(y));
+	    let j = 1;
+	    let t_x = q+q;
+	    while(j<y)
+	    {
+	    let t_x = t_x +t_x;
+	    let j = j+1;
+	    }
+	    //((q+q)*y
+	    if ( x-t_x< y)
+	    {
+	        let res =  q + q;
+	    }
+	    else
+	    {
+	        let res = q + q + 1;
+	    }
+
+	    if(tx=ty)
+	    {
+	        return res;
+	    }
+	    else
+	    {
+	        return -res;
+	    }
+	}
+	*//** Returns the integer part of the square root of x. */
+	function int sqrt(int x)
+	{
+		var int n,i,temp,t, j;
+		let t = 0;
+		let j = 7;
+
+		while(~(j<0))
+		{
+			let temp = t+power[j];
+			let n = temp*temp;
+
+			if(~(n>x)&(n>0))
+			{
+				let t = temp;
+			}
+
+			let j = j-1;
+
+		}
+
+		return t;
+	}
+
+	/** Returns the greater number. */
+	function int max(int a, int b)
+	{
+		if((a-b)<0)
+		{
+			return b;
+		}
+		else
+		{
+			return a;
+		}
+	}
+
+	/** Returns the smaller number. */
+	function int min(int a, int b)
+	{
+		if((a-b)<0)
+		{
+			return a;
+		}
+		else
+		{
+			return b;
+		}
+	}
+}

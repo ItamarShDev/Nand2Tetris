@@ -1,0 +1,161 @@
+// This file is part of the materials accompanying the book
+// "The Elements of Computing Systems" by Nisan and Schocken,
+// MIT Press. Book site: www.idc.ac.il/tecs
+// File name: projects/12/Memory.jack
+
+/**
+ * Memory operations library.
+ */
+class Memory
+{
+	static Array mem, fl;
+	static int fl_l,fl_n,max_addr;
+	static int ALLOC_SIZE;
+	/** Initializes memory parameters. */
+	function void init()
+	{
+		let mem = 0;
+		let fl = 2048;
+		let max_addr = 16384;
+		let fl_l = 0;
+		let fl_n = 1;
+		return;
+	}
+
+	/** Returns the value of the main memory at this address. */
+	function int peek(int address)
+	{
+		return mem[address];
+	}
+
+	/** Sets the value of the main memory at this address
+	 *  to the given value. */
+	function void poke(int address, int value)
+	{
+		let mem[address] = value;
+		return;
+	}
+
+	/** finds and allocates from the heap a memory block of the
+	 *  specified size and returns a reference to its base address. */
+	function int alloc(int size)
+	{
+		var int p;		
+//		var Array prev, found;
+
+			let p = fl;
+			if ((fl+size)<max_addr)
+			{
+			let fl = fl+size;
+			}
+		else
+		{
+		let fl =2048;
+		let p = fl;
+		let fl = fl +size; 
+		}
+		/*
+		let prev = Memory.find_best_fit(size);
+
+		if(prev = 16384)
+		{
+			let found = null;
+		}
+		else
+		{
+			if(prev = null)
+			{
+				let found = fl;
+				let fl = found+size+1;
+			}
+			else
+			{
+				let found = prev[fl_n];
+				let prev[fl_n] = found+size+1;
+			}
+		}
+	*/
+		return p;
+	}
+
+	/*
+	to prevent fragmentation as much as we can, we will use best fit algorithm
+	*/
+	function Array find_best_fit(int size)
+	{
+		var Array block, best;
+		var int csize;
+		var int best_size;
+		let best_size = 16384-2048;
+		let block = fl;
+
+		while(~(block= null))
+		{
+			let csize = block[fl_l]-1;
+
+			if(~(csize<size)&(csize<best_size))
+			{
+				let best = csize;
+				return best;
+			}
+
+			let block = block[fl_n];
+		}
+
+		return null;
+	}
+	/** De-allocates the given object and frees its space. */
+	function void deAlloc(int object)
+	{
+		/*var Array block, prev, next_block;
+		var int alloc_size;
+		let alloc_size = object[-1];
+
+		if( fl > object )
+		{
+			let prev =  null;
+		}
+		else
+		{
+
+			let block = fl;
+
+			while( ~(block[fl_n] = null) & (block[fl_n] < object) )
+			{
+				let block = block[fl_n];
+			}
+
+		}
+
+		if( prev = null )
+		{
+			let object[fl_l] = alloc_size;
+			let object[fl_n] = fl;
+			let fl = object;
+			let prev = object;
+		}
+		else
+		{
+			if( (prev + prev[fl_l]) = object )
+			{
+				let prev[fl_l] = prev[fl_l] + alloc_size;
+			}
+			else
+			{
+				let object[fl_l] = alloc_size;
+				let object[fl_n] = prev[fl_n];
+				let prev[fl_n] = object;
+				let prev = object;
+			}
+		}
+
+		if( (prev + prev[fl_l]) = prev[fl_n] )
+		{
+			let next_block = prev[fl_n];
+			let prev[fl_l] = prev[fl_l] + next_block[fl_l];
+			let prev[fl_n] = next_block[fl_n];
+		}
+*/
+		return;
+	}
+}

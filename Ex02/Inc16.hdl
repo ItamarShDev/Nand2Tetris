@@ -1,0 +1,30 @@
+// This file is part of the materials accompanying the book 
+// "The Elements of Computing Systems" by Nisan and Schocken, 
+// MIT Press. Book site: www.idc.ac.il/tecs
+// File name: projects/02/Inc16.hdl
+
+/**
+ * 16-bit incrementer: out = in + 1 (arithmetic addition)
+ */
+
+CHIP Inc16 {
+    IN in[16];
+    OUT out[16];
+    PARTS:
+	Not(in=in[0],out=out[0]);
+	HalfAdder(a=in[0],b=in[1],sum=out[1],carry=x);
+	HalfAdder(a=in[2],b=x,sum=out[2],carry=x2);
+	HalfAdder(a=in[3],b=x2,sum=out[3],carry=x3);
+	HalfAdder(a=in[4],b=x3,sum=out[4],carry=x4);
+	HalfAdder(a=in[5],b=x4,sum=out[5],carry=x5);
+	HalfAdder(a=in[6],b=x5,sum=out[6],carry=x6);
+	HalfAdder(a=in[7],b=x6,sum=out[7],carry=x7);
+	HalfAdder(a=in[8],b=x7,sum=out[8],carry=x8);
+	HalfAdder(a=in[9],b=x8,sum=out[9],carry=x9);
+	HalfAdder(a=in[10],b=x9,sum=out[10],carry=x10);
+	HalfAdder(a=in[11],b=x10,sum=out[11],carry=x11);
+	HalfAdder(a=in[12],b=x11,sum=out[12],carry=x12);
+	HalfAdder(a=in[13],b=x12,sum=out[13],carry=x13);
+	HalfAdder(a=in[14],b=x13,sum=out[14],carry=x14);
+	HalfAdder(a=in[15],b=x14,sum=out[15],carry=x15);
+}

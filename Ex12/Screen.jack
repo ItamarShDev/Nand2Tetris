@@ -1,0 +1,210 @@
+// This file is part of the materials accompanying the book
+// "The Elements of Computing Systems" by Nisan and Schocken,
+// MIT Press. Book site: www.idc.ac.il/tecs
+// File name: projects/12/Screen.jack
+
+/**
+ * Graphic screen library.
+ */
+class Screen
+{
+	 static Array power;
+
+	static Array screen;
+	static boolean to_paint;//false id not, true if yes
+	/** Initializes the Screen. */
+	function void init()
+	{
+		let screen = 16384;//set it to point at screen address
+		let to_paint = true;
+		 let power= Array.new(16);
+		 let power[0] = 1;
+		 let power[1] = 2;
+		 let power[2] = 4;
+		 let power[3] = 8;
+		 let power[4] = 16;
+		 let power[5] = 32;
+		 let power[6] = 64;
+		 let power[7] = 128;
+		 let power[8] = 256;
+		 let power[9] = 512;
+		 let power[10] = 1024;
+		 let power[11] = 2048;
+		 let power[12] = 4096;
+		 let power[13] = 8192;
+		 let power[14] = 16384;
+		 let power[15] = 16384+16384;
+		return;
+	}
+
+	/** Erases the whole screen. */
+	function void clearScreen()
+	{
+		var int i;
+		let i = 0;
+
+		while(i<8192)//sum of screen regs
+		{
+			let screen[i] = false;//remove color
+			let i = i+1;
+		}
+
+		return;
+	}
+
+	/** Sets the color to be used in further draw commands
+	 *  where white = false, black = true. */
+	function void setColor(boolean b)
+	{
+		let to_paint = b;
+		return;
+	}
+
+	/** Draws the (x, y) pixel. */
+	function void drawPixel(int x, int y)
+	{
+		var int addr;
+		var int pow;
+		let addr = (y*32)+(x/16);//get the address for row and line
+	let pow = power[x&15];
+		if(~to_paint)
+		{
+			let screen[addr] = screen[addr]&~pow; //set the selected bit off
+		}
+		else
+		{
+			let screen[addr] = screen[addr]|pow; //set the selected bit on
+		}
+
+		return;
+	}
+
+	/** Draws a line from pixel (x1, y1) to (x2, y2). */
+	function void drawLine(int x1, int y1, int x2, int y2)
+	{
+		var int dx, dy, a, b;
+		let a = 0;
+		let b = 0;
+
+		let dx = Math.abs(x2-x1);
+		let dy = Math.abs(y2-y1);
+
+		while((~(a>dx))&(~(b>dy)))
+		{
+			if(~(y1>y2))
+			{
+				if(x1>x2)
+				{
+					do Screen.drawPixel((x1-a),(y1+b));
+				}
+				else
+				{
+					do Screen.drawPixel((x1+a),(y1+b));
+				}
+
+			}
+
+			if(y1>y2)
+			{
+				if(x1>x2)
+				{
+					do Screen.drawPixel((x1-a),(y1-b));
+				}
+				else
+				{
+					do Screen.drawPixel((x1+a),(y1-b));
+				}
+			}
+
+
+
+			if((dx=0)|(dy=0))
+			{
+
+				if(dx= 0)
+				{
+					let b = b+1;
+				}
+
+				if(dy=0)
+				{
+					let a = a+1;
+				}
+			}
+			else
+			{
+
+				if((a*dy)<(b*dx))
+				{
+					let a = a+1;
+				}
+				else
+				{
+					let b = b+1;
+				}
+			}
+		}
+
+		return;
+	}
+
+	/** Draws a filled rectangle where the top left corner
+	 *  is (x1, y1) and the bottom right corner is (x2, y2). */
+	function void drawRectangle(int x1, int y1, int x2, int y2)
+	{
+		var int ty;
+		let ty = y1;
+
+		//draw horizontal line from x1 to x2, and go down a line
+		while(~(ty>y2))
+		{
+			do Screen.drawLine(x1,ty,x2,ty);
+
+			let ty = ty+1;
+		}
+
+		return;
+	}
+
+	/** Draws a filled circle of radius r around (cx, cy). */
+	function void drawCircle(int cx, int cy, int r)
+	{
+		var int max_y,min_y,distance, dy;
+		let max_y = cy+r;
+		let min_y= cy-r;
+
+		if(min_y<0)
+		{
+			return;
+		}
+
+		while(~(min_y>max_y))
+		{
+			let dy = Math.abs(cy-min_y);
+
+			let distance = Screen.distance_calc(dy,r);
+
+			if(min_y<cy)
+			{
+				do Screen.drawLine((cx-distance), (cy-dy), (cx+distance), (cy-dy) );
+			}
+			else
+			{
+				do Screen.drawLine((cx-distance), (cy+dy), (cx+distance), (cy+dy) );
+			}
+
+			let min_y = min_y+1;
+		}
+
+		return;
+	}
+
+	function int distance_calc(int dy,int r)
+	{
+		var int pow_r,pow_dy, distance;
+		let pow_r = r*r;
+		let pow_dy = dy*dy;
+		let distance = Math.sqrt((pow_r - pow_dy));
+		return distance;
+	}
+}

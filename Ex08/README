@@ -1,0 +1,18 @@
+=========================================================================
+Itamar Sharify , ID 301589305 , itamarsharify@gmail.com
+=========================================================================
+              Project 8: The VM: Program Control
+            --------------------------------------
+
+Submitted Files:
+------------------
+README - this file
+VMtranslator.py - the VM
+Makefile.bat - makefile
+VMtranslator.bat - exec file
+Instructions:
+--------------
+this is a Python program, thus compiling is not needed
+all you need is to run the file with the path to the VM file as argument
+
+using python 3.4.2

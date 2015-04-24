@@ -1,0 +1,14 @@
+class Main
+{
+	static snakeGame s;
+  function void main()
+	{
+  do screen.welcome();
+  let s = snakeGame.new();
+  do s.play();
+  do Screen.clearScreen();
+  do screen.gameover();
+  return;
+  }
+
+}

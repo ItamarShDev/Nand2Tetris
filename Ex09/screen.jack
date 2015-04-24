@@ -1,0 +1,72 @@
+class screen
+{
+	static int key;
+	function void welcome()
+	{
+	do Output.println();
+	do Output.println();
+	do Output.println();
+	do Output.println();
+
+	do Output.printString("       d8888b.                          888");
+	do Output.println();
+	do Output.printString("      d88P Y88b                         888");
+	do Output.println();
+	do Output.printString("      Y88b.                             888");
+	do Output.println();
+	do Output.printString("       Y88b.      888888b.   88888b.    888  888    .ddsb.");
+	do Output.println();
+	do Output.printString("         8Y88b.   888  88b        8b    888  88P   dSP  Y8b");
+	do Output.println();
+	do Output.printString("           888b   888  888  .d888888    888K888    88888888");
+	do Output.println();
+	do Output.printString("     Y88b  s88P   888  888  888  888    888  88b   YSb.");
+	do Output.println();
+	do Output.printString("       Y8888P     888  888   Y888888    888  888    Y88888.");
+	do Output.println();
+	do Output.println();
+	do Output.println();
+	do Output.println();
+	do Output.println();
+	do Output.println();
+	do Output.println();
+	do Output.printString("             ---- Press any key to continue ---- ");
+
+  	while(key = 0)
+  	{
+  		let key=Keyboard.keyPressed();
+  	}
+  	do Screen.clearScreen();
+	return;
+	}
+
+	function void gameover()
+	{
+	do Output.moveCursor(0,0);
+	do Output.println();
+	do Output.printString(" GAMEOVER        G        G      A     GAMEOVE");
+	do Output.println();
+	do Output.printString(" GA             A M       A E  G M     A");
+	do Output.println();
+	do Output.printString(" OV  GMEA      E   O	     M  R   E     MVERGA");
+	do Output.println();
+	do Output.printString(" ER     G     VERGAME     E      O     E");
+	do Output.println();
+	do Output.printString(" GAMEOVER    E       O    V      V     OERGAME");
+	do Output.println();
+	do Output.println();
+	do Output.moveCursor(10,0);
+    do Output.printString("      GAME     G       G   GAMEOVE   GVERGA      G ");
+    do Output.println();
+    do Output.printString("     A    O     A     R    A         A    M      A ");
+    do Output.println();
+    do Output.printString("     M    V      M   E     MVERGA    MGAME       M ");
+    do Output.println();
+    do Output.printString("     E    E       E V      E         E    O      E  ");
+    do Output.println();
+    do Output.printString("      OVER         O       OERGAME   O     V     .   ");
+
+	return;
+	}
+
+}

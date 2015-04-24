@@ -1,0 +1,20 @@
+/**
+ * This chip is an extended DFF: remembers not only last input, but three 
+ * a(t) = in(t-1) 
+ * b(t) = in(t-2) 
+ * c(t) = in(t-3) 
+ */
+
+CHIP DFF3Step {
+
+    IN in[16];
+	OUT a[16],b[16],c[16];
+
+    PARTS:
+	
+	//implementation missing
+	Register(in=in,load =true,out=a,out=out1);
+	Register(in=out1,load =true,out=b,out=out2);
+	Register(in=out2,load =true,out=c);
+	
+}

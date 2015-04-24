@@ -1,0 +1,177 @@
+<html lang="en">
+<head>
+<title>From Hardware to Software @ The Jerusalem College of Engineering</title>    
+</head>
+<body>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-44994495-1', 'jce.ac.il');
+  ga('send', 'pageview');
+
+</script>
+<center>
+<span style="font-size:18.0pt;font-family:Arial;color:#004080;
+mso-fareast-language:EN-US">Project 3: Sequential Chips</span></strong><span style="mso-fareast-language:EN-US"> <o:p></o:p></span></p>
+</center>
+
+<p><b>Objective:</b> Build all the chips described in Chapter 3.
+ The only building blocks that you can use are primitive DFF gates,
+ chips that you will build on top of them, and chips described in previous chapters. 
+</p>
+
+<p><b>Resources: </b>The only tool needed for this project
+ is the hardware simulator supplied with the book. 
+ All the chips should be implemented in the HDL language specified
+ in appendix A. As usual, for each chip we supply a skeletal .hdl
+ program with a missing implementation part, a .tst script file
+ that tells the hardware simulator how to test it, and a .cmp compare file. 
+ Your job is to complete the missing implementation parts of all the
+ supplied .hdl programs.</p>
+
+<p><b>Contract: </b>
+When loaded into the <a class="links" href="http://www1.idc.ac.il/tecs/software.html"> Hardware Simulator  </a>,
+ your chip design (modified .hdl program), tested on the supplied .tst file, 
+ should produce the outputs listed in the supplied .cmp file. If that is not the case,
+ the simulator will let you know.
+</p>
+
+
+ <table border="2">
+  <thead>
+  <tr>
+    <th>Chip (HDL)</th>
+	<th>Function</th>
+	<th>Test script</th>
+	<th>Compare file</th>
+	</tr>
+  </thead>  
+  <tbody>
+    <tr> 
+     <td>DFF</td>
+     <td>Data Flip-Flop (primitive) 	</td>
+	 <td></td>
+     <td></td>	 
+  </tr>  
+  <tr> 
+     <td><a class="links" href="Bit.hdl"> Bit  </a></td>
+     <td>1-bit binary cell</td>
+	 <td><a class="links" href="Bit.tst"> Bit.tst  </a></td>
+     <td><a class="links" href="Bit.cmp"> Bit.cmp </a></td>	 
+  </tr>
+  <tr>   
+     <td><a class="links" href="Register.hdl"> Register  </a></td>
+     <td>16-bit Register</td>
+	 <td><a class="links" href="Register.tst"> Register.tst  </a></td>
+     <td><a class="links" href="Register.cmp"> Register.cmp </a></td>	 
+  </tr>
+  <tr> 
+     <td><a class="links" href="RAM8.hdl"> RAM8  </a></td>
+     <td>16-bit / 8-register memory</td>
+	 <td><a class="links" href="RAM8.tst"> RAM8.tst  </a></td>
+     <td><a class="links" href="RAM8.cmp"> RAM8.cmp </a></td>	 
+  </tr>
+  <tr> 
+     <td><a class="links" href="RAM64.hdl"> RAM64  </a></td>
+     <td>16-bit / 64-register memory</td>
+	 <td><a class="links" href="RAM64.tst"> RAM64.tst  </a></td>
+     <td><a class="links" href="RAM64.cmp"> RAM64.cmp </a></td>	 
+  </tr>
+  <tr> 
+     <td><a class="links" href="RAM512.hdl"> RAM512  </a></td>
+     <td>16-bit / 512-register memory</td>
+	 <td><a class="links" href="RAM512.tst"> RAM512.tst  </a></td>
+     <td><a class="links" href="RAM512.cmp"> RAM512.cmp </a></td>	 
+  </tr>
+    <tr> 
+     <td><a class="links" href="RAM4K.hdl"> RAM4K  </a></td>
+     <td>16-bit / 4096-register memory</td>
+	 <td><a class="links" href="RAM4K.tst"> RAM4K.tst  </a></td>
+     <td><a class="links" href="RAM4K.cmp"> RAM4K.cmp </a></td>	 
+  </tr>
+    <tr> 
+     <td><a class="links" href="RAM16K.hdl"> RAM16K  </a></td>
+     <td>16-bit / 16384-register memory</td>
+	 <td><a class="links" href="RAM16K.tst"> RAM16K.tst  </a></td>
+     <td><a class="links" href="RAM16K.cmp"> RAM16K.cmp </a></td>	 
+  </tr>
+      <tr> 
+     <td><a class="links" href="PC.hdl"> PC  </a></td>
+     <td>16-bit Program Counter</td>
+	 <td><a class="links" href="PC.tst"> PC.tst  </a></td>
+     <td><a class="links" href="PC.cmp"> PC.cmp </a></td>	 
+  </tr>
+
+  
+  
+  
+</tbody>
+</table> 
+
+
+
+<p>
+<b>The Data Flip-Flop (DFF) gate</b> is considered primitive and
+ thus there is no need to build it: when the simulator
+ encounters a DFF gate in an HDL program, it automatically
+ invokes the built-in tools/builtInChips/DFF.hdl implementation.
+ 
+ <p>
+<b>The directory structure of this project</b> :
+ When constructing RAM chips from smaller RAM chips,
+ we recommend using built-in versions of the latter.
+ Otherwise, the simulator may run very slowly or even out
+ of (real) memory space, since large RAM chips contain tens 
+ of thousands of lower level chips, and all these chips are
+ kept in memory (as software objects) by the simulator.
+ For this reason, we have placed the RAM512.hdl, RAM4K.hdl,
+ and RAM16K.hdl programs in a separate directory. This way,
+ the recursive descent construction of the RAM4K and RAM16K
+ chips stops with the RAM512 chip, while the lower-level chips 
+ from which the RAM512 is made are treated as built-in (since
+ the simulator does not find them in this directory).
+ 
+ 
+ 
+<p>
+Steps: We recommend proceeding in the following order:  
+ 
+<ul><li>0.The hardware simulator needed for this project 
+is available <a class="links" href="http://www1.idc.ac.il/tecs/software/tecs-software-suite-2.5.zip"> here </a>
+here in the tools directory of the book’s software suite.
+</li><li>
+
+1.      Read Appendix A (Hardware Description Language),  focusing on sections 6 and 7;
+</li><li>
+2.      Go through the hardware simulator tutorial focusing on parts IV and V;
+</li><li>
+3.      Create a directory named projects/03 on your computer,
+ extract <a class="links" href="Ex03.zip"> Ex03  </a> to it,
+ then build and simulate all the specified chips.
+</ul> 
+ 
+ 
+<center>
+<h1>Twist</h1>
+<br>
+</center>
+<FONT SIZE="3"><P>As you should know from the last project, the ALU chip has 6 control inputs, which means 2^6 = 64 different combinations.<br>
+In the book there only 18 documented combinations; we would like to reveal what some of the hidden combinations do.<br>
+We will represent the six controls (zx, nx, zy, ny, f, no) as an array: zx- the first bit, nx - the second bit, etc. <br>
+Therefore, if we want to represent control input of zx=0, nx=1, zy=1, ny=0, f=1, no=1 - it will have a control array: 011011.<br>
+<UL TYPE="CIRCLE">
+<LI><I>Your mission is to add to the end of the README file</I> 
+<UL TYPE="SQUARE">
+<LI>In the last-2 line of the README, write the control array which computes x nand y.
+<LI>In the last-1 line of your README, write the control array which computes x nor y.
+<LI>In the last line of your README, write the control array which computes -2.
+</UL>
+</UL>
+</P></FONT>
+
+
+</body>
+</html>

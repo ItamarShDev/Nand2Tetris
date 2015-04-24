@@ -1,0 +1,144 @@
+<html lang="en">
+<head>
+<title>From Hardware to Software @ The Jerusalem College of Engineering</title>    
+</head>
+<body>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-44994495-1', 'jce.ac.il');
+  ga('send', 'pageview');
+
+</script>
+<center>
+<span style="font-size:18.0pt;font-family:Arial;color:#004080;
+mso-fareast-language:EN-US">Project 2: Combinational Chips</span></strong><span style="mso-fareast-language:EN-US"> <o:p></o:p></span></p>
+</center>
+
+<p><b>Objective:</b> Build all the chips described in Chapter 2.
+ The only building blocks that you can use are the chips described
+ in chapter 1 and the chips that you will gradually build in this project. 
+</p>
+
+<p><b>Tip:</b> When your HDL programs invoke chips that you may
+ have built in project 1, it is recommended to use the built-in
+ versions of these chips instead. This will ensure correctness
+ and speed up the operation of the hardware simulator.
+ There is a simple way to accomplish this convention:
+ make sure that your project directory includes only the .hdl files
+ that belong to the present project. 
+</p>
+
+
+<p><b>Resources: </b>The only tool that you need for this project
+ is the hardware simulator supplied with the book.
+ All the chips should be implemented in the HDL language
+ specified in Appendix A. For each one of the chips 
+ mentioned in Chapter 2, we provide a skeletal .hdl program 
+ (text file) with a missing implementation part. In addition,
+ for each chip we provide a .tst script file that tells the
+ hardware simulator how to test it, along with the correct 
+ output file that this script should generate, called .cmp or
+ "compare file". Your job is to complete the missing implementation
+ parts of all the supplied .hdl programs.
+</p>
+
+<p><b>Contract: </b>When loaded into the 
+<a class="links" href="http://www1.idc.ac.il/tecs/software.html"> Hardware Simulator  </a>
+, your chip design (modified .hdl program),
+ tested on the supplied .tst file, should produce the outputs
+ listed in the supplied .cmp file. If that is not the case,
+ the simulator will let you know.</p>
+
+
+ <table border="2">
+  <thead>
+  <tr>
+    <th>Chip (HDL)</th>
+	<th>Function</th>
+	<th>Test script</th>
+	<th>Compare file</th>
+	</tr>
+  </thead>  
+  <tbody>  
+  <tr> 
+     <td><a class="links" href="HalfAdder.hdl"> HalfAdder  </a></td>
+     <td>Half Adder</td>
+	 <td><a class="links" href="HalfAdder.tst"> HalfAdder.tst  </a></td>
+     <td><a class="links" href="HalfAdder.cmp"> HalfAdder.cmp </a></td>	 
+  </tr>
+  <tr>   
+     <td><a class="links" href="FullAdder.hdl"> FullAdder  </a></td>
+     <td>Full Adder</td>
+	 <td><a class="links" href="FullAdder.tst"> FullAdder.tst  </a></td>
+     <td><a class="links" href="FullAdder.cmp"> FullAdder.cmp </a></td>	 
+  </tr>
+  <tr> 
+     <td><a class="links" href="Add16.hdl"> Add16  </a></td>
+     <td>16-bit Adder</td>
+	 <td><a class="links" href="Add16.tst"> Add16.tst  </a></td>
+     <td><a class="links" href="Add16.cmp"> Add16.cmp </a></td>	 
+  </tr>
+  <tr> 
+     <td><a class="links" href="Inc16.hdl"> Inc16  </a></td>
+     <td>16-bit Incrementer</td>
+	 <td><a class="links" href="Inc16.tst"> Inc16.tst  </a></td>
+     <td><a class="links" href="Inc16.cmp"> Inc16.cmp </a></td>	 
+  </tr>
+  <tr> 
+     <td><a class="links" href="ALU.hdl"> ALU  </a></td>
+     <td>Arithmetic-Logic Unit</td>
+	 <td><a class="links" href="ALU.tst"> ALU.tst  </a></td>
+     <td><a class="links" href="ALU.cmp"> ALU.cmp </a></td>	 
+  </tr>
+    <tr> 
+     <td><a class="links" href="DivideInFour.hdl"> DivideInFour  </a></td>
+     <td>Division in four</td>
+	 <td><a class="links" href="DivideInFour.tst"> DivideInFour.tst  </a></td>
+     <td><a class="links" href="DivideInFour.cmp"> DivideInFour.cmp </a></td>	 
+  </tr>
+    <tr> 
+     <td><a class="links" href="Verification.hdl"> Verification  </a></td>
+     <td></td>
+	 <td></td>
+     <td></td>	 
+  </tr>
+
+  
+  
+  
+</tbody>
+</table> 
+
+
+
+<p>
+We recommend building the chips in the order in which they appear in the chapter.
+ However, since the simulator features built-in versions of all the chips 
+ described in the book, you can always use these chips without defining them first: 
+ the simulator will automatically use their built-in versions.
+<p>
+
+Steps: We recommend proceeding in the following order:  
+ 
+<ul><li>0.The hardware simulator needed for this project 
+is available <a class="links" href="http://www1.idc.ac.il/tecs/software/tecs-software-suite-2.5.zip"> here </a>
+here in the tools directory of the book’s software suite.
+</li><li>
+
+1.      Read Appendix A (Hardware Description Language), Sections 1-6 only;
+</li><li>
+2.      Go through the hardware simulator tutorial (parts I,II,III only),
+ available in the tutorials directory of the book’s software suite;
+</li><li>
+3.      Create a directory named projects/02 on your computer,
+ extract <a class="links" href="Ex02.zip"> Ex02  </a> to it,
+ then build and simulate all the specified chips.
+</ul> 
+ 
+
+</body>
+</html>

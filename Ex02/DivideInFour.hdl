@@ -1,0 +1,32 @@
+/*
+ * Gets a 16-bit number in[16]
+ * a[16] is a 16-bit result of in/4. (The whole part without fractions)
+ * b[16] is the remainder  - in modulo 4(http://en.wikipedia.org/wiki/Modulo_operation)
+ */
+
+CHIP DivideInFour {
+    IN in[16];
+    OUT a[16], b[16];
+
+    PARTS:
+	B(a=in[0],b=in[2],out=a[0]);	
+	B(a=in[0],b=in[3],out=a[1]);	
+	B(a=in[0],b=in[4],out=a[2]);	
+	B(a=in[0],b=in[5],out=a[3]);	
+	B(a=in[0],b=in[6],out=a[4]);	
+	B(a=in[0],b=in[7],out=a[5]);
+	B(a=in[0],b=in[8],out=a[6]);	
+	B(a=in[0],b=in[9],out=a[7]);	
+	B(a=in[0],b=in[10],out=a[8]);	
+	B(a=in[0],b=in[11],out=a[9]);	
+	B(a=in[0],b=in[12],out=a[10]);	
+	B(a=in[0],b=in[13],out=a[11]);	
+	B(a=in[0],b=in[14],out=a[12]);	
+	B(a=in[0],b=in[15],out=a[13]);	
+
+	B(a=in[0],b=in[0],out=b[0]);	
+	B(a=in[0],b=in[1],out=b[1]);	
+	//B(a=in[0],b=in[2],out=a[0]);		
+	
+	
+}

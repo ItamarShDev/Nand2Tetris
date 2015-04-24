@@ -1,0 +1,98 @@
+class Node /** Represents a linked Node. */
+{
+  field int x1,y1,size,x2,y2, step, time;
+  field Node next, prev;
+  static Node temp;
+
+  /* Creates a new Node object. */
+  constructor Node new(int x, int y, Node cdr)
+  {
+      let x1 = x;
+      let y1 = y;
+      let size = 10;
+      let next = cdr;
+      let prev = null;
+    do draw();
+    return this;
+ }
+
+method void draw()
+	{
+		//drawialization
+		let x2 = x1 + size;
+		let y2 = y1 + size;
+		let step = 4;
+		do Screen.drawRectangle(x1,y1,x2,y2);
+		return;
+	}
+  method void update(Node prev)
+  {
+    let x1 = prev.getX1();
+    let y1 = prev.getY1();
+    return;
+  }
+
+  /* Disposes this Node by recursively disposing its tail. */
+  method int getSize()
+  {
+  return size;
+  }
+  method int getStep()
+  {
+  return step;
+  }
+  method int getX1()
+   {
+   return x1;
+   }
+  method int getX2()
+   {
+    return x2;
+   }
+  method int getY1()
+   {
+    return y1;
+   }
+  method int getY2()
+   {
+    return y2;
+   }
+   method Node getNext()
+   {
+   return next;
+   }
+   method void setNext(Node other)
+   {
+   let next = other;
+   return;
+   }
+   method Node getPrev()
+   {
+   return prev;
+   }
+   method void setPrev(Node other)
+   {
+   let prev = other;
+   return;
+   }
+    method void setX1(int x)
+   {
+   let x1 = x;
+   return;
+   }
+     method void setY1(int y)
+   {
+   let y1 = y;
+   return;
+   }
+ method void dispose()
+  {
+    if (~(next = null))
+    {
+       do next.dispose();
+    }
+    do Memory.deAlloc(this);
+    return;
+  }
+
+}

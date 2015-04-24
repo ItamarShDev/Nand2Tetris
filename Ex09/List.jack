@@ -1,0 +1,134 @@
+class List
+{
+   field Node  next, head;
+   field Node temp, temp2;
+   field int x,y;
+   static int size;
+
+   constructor List new(int x, int y)
+   {
+    let head = Node.new(x, y, null);
+    do head.setPrev(null);
+    let size = 10;
+    return this;
+   }
+
+    method Node getHead()
+    {
+    return head;
+    }
+
+    method Node getTail()
+    {
+    let temp  = head.getNext();
+   while (~(temp.getNext()=null))
+   {
+   let temp = temp.getNext();
+   }
+   return temp;
+    }
+
+
+   method void add()
+   {
+   let temp = head;
+   do head.setPrev(null);
+   while(~(temp.getNext()=null))
+    {
+        let temp = temp.getNext();
+    }
+    let next = Node.new(temp.getX1(),temp.getY1(),null );
+    do temp.setNext(next);
+    do next.setPrev(temp);
+    return;
+   }
+
+
+   method void update()
+   {
+   let temp  = getTail();
+    let temp2 = temp.getPrev();
+  while(~(temp2=null))
+   {
+    do temp.update(temp2);
+    let temp = temp.getPrev();
+    let temp2 = temp.getPrev();
+   }
+   return;
+   }
+
+method void drawList()
+{
+    let temp = head;
+    while (~(temp=null))
+    {
+        do temp.draw();
+        let temp = temp.getNext();
+    }
+return;
+}
+
+  method void moveRight()
+  {
+    if(head.getX2() + head.getStep() <512)
+    {
+    do update();
+    do head.setX1(head.getX1()+head.getStep());
+    }
+    return;
+  }
+
+  method void moveLeft()
+  {
+    if(head.getX1() - head.getStep() > -1)
+    {
+    do update();
+    do head.setX1(head.getX1()-head.getStep());
+    }
+    return;
+  }
+  method void moveUp()
+  {
+    if(head.getY1() - head.getStep() > -1)
+    {
+    do update();
+    do head.setY1(head.getY1()-head.getStep());
+    }
+    return;
+  }
+  method void moveDown()
+  {
+    if(head.getY2() + head.getStep() < 256)
+    {
+    do update();
+    do head.setY1(head.getY1()+head.getStep());
+    }
+    return;
+  }
+
+  method boolean crash()
+  {
+  let temp = head.getNext();
+  let temp = temp.getNext();
+  while (~(temp.getNext()=null))
+   {
+   let temp = temp.getNext();
+   if (head.getX1() = temp.getX1())
+    {
+      if (head.getX2() = temp.getX2())
+      {
+        if (head.getY1() = temp.getY1())
+        {
+          if (head.getY2() = temp.getY2())
+          {
+            return true;
+          }
+        }
+      }
+    }
+   }
+  return false;
+  }
+
+
+}

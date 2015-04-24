@@ -1,0 +1,18 @@
+
+/**
+ * out = b  
+ */
+
+CHIP B {
+    IN a, b;
+    OUT out;
+
+    PARTS:
+    Not(in=a,out=x);
+    //XandB
+    And(a=x,b=b,out=q);
+    //A and B
+    And(a=a,b=b,out=w);
+
+    Or(a=q,b=w,out=out);
+}
