@@ -1,18 +1,17 @@
-=========================================================================
-Itamar Sharify , ID 301589305 , itamarsharify@gmail.com
-=========================================================================
-              Project 11: Compiler II (Code Generation)
-            -------------------------------------------
+#Project 11: Compiler II (Code Generation)
 
-Submitted Files:
+###Submitted Files:
 ------------------
-README - this file
-JackCompiler.py - the JackAnalizer
-Makefile.bat - makefile
-JackCompiler.bat - exec file
-Instructions:
---------------
-this is a Python program, thus compiling is not needed
-all you need is to run the file with the path to the XML file as argument
+<ul>
+<li>README - this file</li>
+<li>JackCompiler.py - the JackAnalizer</li>
+<li>Makefile.bat - makefile</li>
+<li>JackCompiler.bat - exec file</li>
+</ul>
 
-using python 3.4.2
+###Instructions:
+--------------
+>this is a Python program, thus compiling is not needed
+>all you need is to run the file with the path to the XML file as argument
+>
+>using python 3.4.2
