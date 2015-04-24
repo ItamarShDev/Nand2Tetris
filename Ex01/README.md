@@ -1,10 +1,7 @@
-=========================================================================
-Itamar Sharify , ID 301589305 , itamarsharify@gmail.com			
-=========================================================================
 			Project 1 - Logic Gates
 			-----------------------
 
-Submitted Files:
+###Submitted Files:
 ------------------
 README - this file
 And.hdl
@@ -23,3 +20,6 @@ Or.hdl
 Or8Way.hdl
 Or16.hdl
 Xor.hdl
+
+<p>
+in this exc, i have buildthe Logic Gates using machine language
