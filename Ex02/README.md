@@ -3,16 +3,16 @@
 
 ###Submitted Files:
 ------------------
-<li>
-<ul>README - this file</ul>
-<ul>B.hdl</ul>
-<ul>ALU.hdl</ul>
-<ul>Add16.hdl</ul>
-<ul>Inc16.hdl</ul>
-<ul>Or16Way.hdl</ul>
-<ul>NegCheck.hdl</ul>
-<ul>FullAdder.hdl</ul>
-<ul>HalfAdder.hdl</ul>
-<ul>DivideInFour.hdl</ul>
-<ul>Verification.hdl</ul>
-</li>
+<ul>
+<li>README - this file</li>
+<li>B.hdl</li>
+<li>ALU.hdl</li>
+<li>Add16.hdl</li>
+<li>Inc16.hdl</li>
+<li>Or16Way.hdl</li>
+<li>NegCheck.hdl</li>
+<li>FullAdder.hdl</li>
+<li>HalfAdder.hdl</li>
+<li>DivideInFour.hdl</li>
+<li>Verification.hdl</li>
+</ul>
