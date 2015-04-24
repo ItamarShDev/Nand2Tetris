@@ -3,7 +3,7 @@
 
 ###Submitted Files:
 ------------------
-<li>
+<ul>
 <ul>README - this file</ul>
 <ul>Bit.hdl</ul>
 <ul>PC.hdl</ul>
@@ -13,4 +13,4 @@
 <ul>RAM4K.hdl</ul>
 <ul>RAM16K.hdl</ul>
 <ul>RAM512.hdl</ul>
-</li>
+</ul>
