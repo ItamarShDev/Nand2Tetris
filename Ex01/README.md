@@ -3,7 +3,8 @@
 
 ###Submitted Files:
 ------------------
-<li>README - this file
+<li>
+<ul>README - this file</ul>
 <ul>And.hdl</ul>
 <ul>And16.hdl</ul>
 <ul>B.hdl</ul>
