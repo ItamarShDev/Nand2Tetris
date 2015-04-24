@@ -1,25 +1,26 @@
-			Project 1 - Logic Gates
-			-----------------------
+#Project 1 - Logic Gates
+
 
 ###Submitted Files:
 ------------------
-README - this file
-And.hdl
-And16.hdl
-B.hdl
-DMux.hdl
-DMux4Way.hdl
-DMux8Way.hdl
-Mux.hdl
-Mux4Way16.hdl
-Mux8Way16.hdl
-Mux16.hdl
-Not.hdl
-Not16.hdl
-Or.hdl
-Or8Way.hdl
-Or16.hdl
-Xor.hdl
+<li>README - this file
+<ul>And.hdl</ul>
+<ul>And16.hdl</ul>
+<ul>B.hdl</ul>
+<ul>DMux.hdl</ul>
+<ul>DMux4Way.hdl</ul>
+<ul>DMux8Way.hdl</ul>
+<ul>Mux.hdl</ul>
+<ul>Mux4Way16.hdl</ul>
+<ul>Mux8Way16.hdl</ul>
+<ul>Mux16.hdl</ul>
+<ul>Not.hdl</ul>
+<ul>Not16.hdl</ul>
+<ul>Or.hdl</ul>
+<ul>Or8Way.hdl</ul>
+<ul>Or16.hdl</ul>
+<ul>Xor.hdl</ul>
+</li>
 
 <p>
 in this exc, i have buildthe Logic Gates using machine language
