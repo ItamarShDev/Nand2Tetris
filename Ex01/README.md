@@ -3,7 +3,6 @@
 
 ###Submitted Files:
 ------------------
-<li>
 <ul>README - this file</ul>
 <ul>And.hdl</ul>
 <ul>And16.hdl</ul>
@@ -21,7 +20,6 @@
 <ul>Or8Way.hdl</ul>
 <ul>Or16.hdl</ul>
 <ul>Xor.hdl</ul>
-</li>
 
 <p>
 in this exc, i have buildthe Logic Gates using machine language
